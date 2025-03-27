@@ -12,6 +12,7 @@ func customHash(input string) uint64 {
 		hash ^= uint64(ch)
 		hash *= prime
 	}
+	
 	return hash
 }
 
