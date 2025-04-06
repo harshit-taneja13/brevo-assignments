@@ -7,8 +7,8 @@ package main
 // It only computes and returns the hash.
 func customHash(input string) uint64 {
 	
-	var hash uint64 = 14695981039346656037  // FNV-1a 64-bit offset basis (choosen experimentally by cheching collision rate)
-	const prime uint64 = 1099511628211      // FNV-1a 64-bit prime multiplier (choosen experimentally by cheching collision rate)
+	var hash uint64 = 14695981039346656037  // FNV-1a 64-bit offset basis (chosen experimentally by checking collision rate)
+	const prime uint64 = 1099511628211      // FNV-1a 64-bit prime multiplier (chosen experimentally by checking collision rate)
 
 	for _, ch := range input {
 		hash ^= uint64(ch)   // To incorporate the input character into the hash
