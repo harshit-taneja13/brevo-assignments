@@ -3,19 +3,16 @@ package main
 import "fmt"
 
 func customHash(input string) uint64 {
-	// var hash uint64 = 0
+	
 	var hash uint64 = 14695981039346656037
-	// const prime uint64 = 31
 	const prime uint64 = 1099511628211
 
 	for _, ch := range input {
 		hash ^= uint64(ch)
 		hash *= prime
 	}
-	
 	return hash
 }
-
 
 func base62Conversion(num uint64) string {
 	const base62Chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
