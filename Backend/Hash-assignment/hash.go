@@ -26,13 +26,14 @@ func base62Conversion(num uint64) string {
 	// base62Chars represents the character set for Base62 encoding.
 	// It includes digits 0-9, uppercase letters A-Z, and lowercase letters a-z.
 	const base62Chars = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+	const base = uint64(62)
+
 	if num == 0 {
 		return "0"
 	}
 
 	// encoded stores base 62 converted string 
 	encoded := ""
-	base := uint64(62)
 
 	for num > 0 {
 		remainder := num % base
@@ -44,21 +45,19 @@ func base62Conversion(num uint64) string {
 }
 
 
-// mod is a constant representing 62^10, which is the maximum value that can be represented by a 10-character Base62 string.
-const mod uint64 = 62 * 62 * 62 * 62 * 62 * 62 * 62 * 62 * 62 * 62
-
 // generateHash returns a unique 10-character hash string for the given input.
 // The process involves computing a FNV-1a hash of the input, reducing it modulo 62^10,
 // converting the result to a Base62 string, and padding it with leading zeros if necessary.
 // Input - the input string to hash.
 // Returns - A 10-character string representing the hash.
 func generateHash(input string) string {
+	// this is a constant representing 62^10, which is the maximum value that can be represented by a 10-character Base62 string.
+	const maxBase62HashValue uint64 = 62 * 62 * 62 * 62 * 62 * 62 * 62 * 62 * 62 * 62
+
 	// computing FNV-1a hash of the input
 	hashVal := customHash(input)
-
 	// reducing it modulo 62^10
-	reduced := hashVal % mod
-
+	reduced := hashVal % maxBase62HashValue
 	// converting the result to a Base62 string
 	hashString := base62Conversion(reduced)
 
