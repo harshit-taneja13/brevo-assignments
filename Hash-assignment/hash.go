@@ -5,7 +5,6 @@ package main
 // Returns - A uint64 value representing the computed hash.
 // It only computes and returns the hash.
 func customHash(input string) uint64 {
-
 	var hash uint64 = FnvOffset  // FNV-1a 64-bit offset basis (chosen experimentally by checking collision rate)
 
 	for _, ch := range input {
@@ -47,8 +46,10 @@ func base62Conversion(num uint64) string {
 // Input - the input string to hash.
 // Returns - A 10-character string representing the hash.
 func generateHash(input string) string {
-	// this is a constant representing 62^10, which is the maximum value that can be represented by a 10-character Base62 string.
-	
+	if len(input) == 0 {
+		return "Input Cannot be empty : Enter a valid String"
+	}
+
 	// computing FNV-1a hash of the input
 	hashVal := customHash(input)
 	// reducing it modulo 62^10

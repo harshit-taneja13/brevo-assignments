@@ -24,4 +24,8 @@ func main() {
 	fmt.Println(generateHash("brevo"))                                                                  // fVAIjrgWaF
 	fmt.Println(generateHash("hello123"))																// ZjqkDtKapB
 	fmt.Println(generateHash("hello12 "))																// Zjuns3GDt6
+	fmt.Println(generateHash(" "))																		// 3aiHPKqovf
+	// ADDED EMPTY INPUT TEST CASE
+	fmt.Println(generateHash(""))																		// Input Cannot be empty : Enter a valid String
+																
 }
