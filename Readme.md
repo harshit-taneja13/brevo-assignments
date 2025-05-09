@@ -1,1 +1,5 @@
 # backend - assignments
+
+In this assignment, I have firstly created a 64 bit unique integer value(hash) of the string input(in customHash function). To generate the unique value i have traversed on the input string and taken XOR with the ASCII values of the characters in the string to add uniqueness and then multiplied it with a prime number for uniform distribution across the hash.
+Next , i have converted the 64 bit integer value in the range 62^10 because a 10 char alphanumeric string(26+26+10) can be uniquely represented by an integer in the range 0 to 62^10 -1 with base 62 so to do this i have used mod operator on the 64 bit integer value to get it in the range. As 64 bit integer value (2^64 ) > 62^10 there can be some collisions.
+After this i have just converted the hash value to the corresponding string in the base 62 form and if the length of string is less than 10 i have done padding by appending "0" at the start
